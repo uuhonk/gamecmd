@@ -1,0 +1,21 @@
+[package]
+name = "gamecmd"
+version = "0.1.0"
+edition = "2021"
+description = "与 UI / 引擎无关的游戏命令注册表与补全引擎（MC 风格的命令输入）：命令候选、参数提示、模糊匹配、函数注册宏、参数平铺。核心只依赖 glam 和自带的 proc-macro。"
+license = "MIT"
+
+[dependencies]
+# 属主 crate 里唯一依赖：`#[command]` 属性宏。核心逻辑（注册表 / 补全 / 匹配 / 解析 /
+# CommandParam）完全不碰它，所以 gamecmd 依然是"纯逻辑、不依赖引擎"的。
+gamecmd_derive = { path = "derive" }
+# glam 向量（`Vec2` / `Vec3` / `IVec2`……）直接当命令参数用：它们在这里就地实现
+# `CommandParam`，使用方的签名里就能直接写 `position: Vec3`。
+#
+# 依赖 glam 是有意的：游戏里的坐标几乎都是 glam 向量，把最常见的一类参数拦在门外
+# 没有意义。如果使用方也依赖 glam，版本必须和这里的**完全一致**，否则会拉进两份
+# glam，同名的向量类型对不上。
+#
+# 不用默认 feature、只开 `std`：glam 要求显式选一个数学后端，而本 crate 只用最基础
+# 的向量类型，自己开 `std` 就够了。
+glam = { version = "0.32", default-features = false, features = ["std"] }

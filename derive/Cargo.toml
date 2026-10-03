@@ -1,0 +1,14 @@
+[package]
+name = "gamecmd_derive"
+version = "0.1.0"
+edition = "2021"
+description = "`gamecmd` 的 proc-macro：`#[command]` 按函数签名生成命令的注册 / 拆包 / 执行代码。"
+license = "MIT"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+proc-macro2 = "1"
+quote = "1"
+syn = { version = "2", features = ["full", "extra-traits"] }
