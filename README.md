@@ -171,3 +171,9 @@ time ─┬─ set ─── <value>
 | `suggest.rs` | `Completion` 和补全算法 |
 | `registry.rs` | `CommandRegistry` / `Invocation` / `CommandError` / `execute` |
 | `derive/` | `#[command]` 属性宏（proc-macro crate）|
+
+## 向量版本兼容
+
+当前使用 glam 0.33，并显式开启 `i32` feature 支持 IVec2 / IVec3；
+与 Bevy 0.20 的 Vec2 / Vec3 类型一致。
+调用方应使用相同 glam minor，确保向量参数的 `CommandParam` 实现可以直接复用。

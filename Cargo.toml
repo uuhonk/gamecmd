@@ -16,6 +16,6 @@ gamecmd_derive = { path = "derive" }
 # 没有意义。如果使用方也依赖 glam，版本必须和这里的**完全一致**，否则会拉进两份
 # glam，同名的向量类型对不上。
 #
-# 不用默认 feature、只开 `std`：glam 要求显式选一个数学后端，而本 crate 只用最基础
-# 的向量类型，自己开 `std` 就够了。
-glam = { version = "0.32", default-features = false, features = ["std"] }
+# 不用默认 feature：`std` 选择数学后端；本 crate 只用最基础
+# 的向量类型；0.33 把整数类型拆成 feature，显式开 `i32` 提供 IVec2 / IVec3。
+glam = { version = "0.33", default-features = false, features = ["std", "i32"] }
