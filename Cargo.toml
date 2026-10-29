@@ -2,6 +2,7 @@
 name = "gamecmd"
 version = "0.1.0"
 edition = "2021"
+rust-version = "1.99.1"
 description = "与 UI / 引擎无关的游戏命令注册表与补全引擎（MC 风格的命令输入）：命令候选、参数提示、模糊匹配、函数注册宏、参数平铺。核心只依赖 glam 和自带的 proc-macro。"
 license = "MIT"
 
